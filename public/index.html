@@ -7,187 +7,140 @@
     <link rel="stylesheet" href="./buld/tailwind.css" />
   </head>
   <body>
-    <div class="bg-slate-800 min-h-screen w-screen">
+    <div class="bg-slate-900 text-slate-300 min-h-screen w-screen">
       <!-- App bar -->
-      <div
-        class="h-12 flex items-center justify-center gap-x-4 bg-slate-700 mb-6"
-      >
-        <h1 class="text-l font-bold text-slate-300">
-          Inventory Application Using TailwindCSS and Javascript
-        </h1>
-        <span
-          class="flex items-start justify-center w-7 h-7 rounded-full bg-slate-500 text-slate-300 border-2 border-slate-300 font-bold"
-          id="number-of-products"
-          >7</span
-        >
-      </div>
-      <!-- App Content -->
-      <div class="container max-w-screen-sm mx-auto p-4">
-        <!-- Category Form -->
-        <section class="mb-6 hidden" id="category-wrapper">
-          <h2 class="text-xl text-slate-400 font-bold mb-2">
-            Add New Category
-          </h2>
-          <form
-            action=""
-            class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4"
+      <header class="bg-slate-800 py-4 shadow-md">
+        <div class="container mx-auto flex items-center justify-between px-6">
+          <h1 class="text-lg font-semibold text-white">
+            Inventory Management Application
+          </h1>
+          <span
+            id="number-of-products"
+            class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-500 text-white font-bold text-sm"
           >
+            7
+          </span>
+        </div>
+      </header>
+      <!-- App Content -->
+      <main class="container max-w-3xl mx-auto p-6">
+        <!-- Category Form -->
+        <section class="mb-8 hidden" id="category-wrapper">
+          <h2 class="text-xl font-semibold mb-4">Add New Category</h2>
+          <form class="bg-slate-800 p-6 rounded-lg shadow-md space-y-4">
             <div>
-              <label for="category-title" class="block mb-1 text-slate-400"
-                >Title</label
+              <label for="category-title" class="block text-sm mb-2"
+                >Category Title</label
               >
               <input
-                name="category-title"
+                type="text"
                 id="category-title"
-                s
-                class="bg-transparent rounded-xl border border-slate-500 text-slate-400 p-2"
+                class="w-full bg-slate-700 rounded-md p-2 border border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
               />
             </div>
             <div>
-              <label
-                for="category-description"
-                class="block mb-1 text-slate-400"
-                >Discription</label
+              <label for="category-description" class="block text-sm mb-2"
+                >Description</label
               >
               <textarea
-                type="text"
-                name="category-description"
                 id="category-description"
-                class="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+                rows="4"
+                class="w-full bg-slate-700 rounded-md p-2 border border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
               ></textarea>
             </div>
-            <div class="flex items-center justify-between gap-x-4">
+            <div class="flex justify-end gap-4">
               <button
-                class="flex-1 border border-slate-400 text-slate-400 rounded-xl py-2"
+                type="button"
                 id="cancle-new-category"
+                class="px-4 py-2 border border-slate-500 text-slate-400 rounded-md hover:bg-slate-600 transition"
               >
-                Cancle
+                Cancel
               </button>
               <button
-                class="flex-1 bg-slate-500 text-slate-200 rounded-xl py-2"
+                type="submit"
                 id="add-new-category"
+                class="px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 transition"
               >
-                Add New Category
+                Add Category
               </button>
             </div>
-            <div></div>
           </form>
         </section>
         <button
           id="toggle-add-category"
-          class="text-slate-500 text-lg mb-4 font-medium"
+          class="text-indigo-400 hover:underline text-sm mb-6"
         >
           Add new category?
         </button>
         <!-- Product Form -->
-        <section class="mb-6">
-          <h2 class="text-xl text-slate-400 font-bold mb-2">Add New Product</h2>
-          <form
-            action=""
-            class="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-4"
-          >
+        <section class="mb-8">
+          <h2 class="text-xl font-semibold mb-4">Add New Product</h2>
+          <form class="bg-slate-800 p-6 rounded-lg shadow-md space-y-4">
             <div>
-              <label for="product-title" class="block mb-1 text-slate-400"
+              <label for="product-title" class="block text-sm mb-2"
                 >Product Title</label
               >
               <input
-                name="product-title"
+                type="text"
                 id="product-title"
-                s
-                class="bg-transparent rounded-xl border border-slate-500 text-slate-400 p-2"
+                class="w-full bg-slate-700 rounded-md p-2 border border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
               />
             </div>
             <div>
-              <label for="product-quantity" class="block mb-1 text-slate-400"
+              <label for="product-quantity" class="block text-sm mb-2"
                 >Quantity</label
               >
               <input
-                name="product-quantity"
-                id="product-quantity"
                 type="number"
-                class="bg-transparent rounded-xl border border-slate-500 text-slate-400 p-2"
+                id="product-quantity"
+                class="w-full bg-slate-700 rounded-md p-2 border border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
               />
             </div>
             <div>
-              <label for="product-category" class="block mb-1 text-slate-400"
+              <label for="product-category" class="block text-sm mb-2"
                 >Category</label
               >
               <select
-                name="product-category"
                 id="product-category"
-                class="bg-transparent rounded-xl border border-slate-500 text-slate-400 p-2 w-full"
-              >
-                <!-- <option value="default" selected disabled>
-                  Select a category
-                </option>
-                <option class="bg-slate-500 text-slate-400" value="mug">
-                  Mug
-                </option>
-                <option class="bg-slate-500 text-slate-400" value="decor">
-                  Decor
-                </option>
-                <option class="bg-slate-500 text-slate-400" value="plate">
-                  Plate
-                </option>
-                <option class="bg-slate-500 text-slate-400" value="vase">
-                  Vase
-                </option>
-                <option class="bg-slate-500 text-slate-400" value="bowl">
-                  Bowl
-                </option> -->
-              </select>
+                class="w-full bg-slate-700 rounded-md p-2 border border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
+              ></select>
             </div>
-            <div>
-              <button
-                class="w-full bg-slate-500 text-slate-200 rounded-xl py-2"
-                id="add-new-product"
-              >
-                Add New Product
-              </button>
-            </div>
-            <div></div>
+            <button
+              type="submit"
+              id="add-new-product"
+              class="w-full bg-indigo-500 text-white py-2 rounded-md hover:bg-indigo-600 transition"
+            >
+              Add Product
+            </button>
           </form>
         </section>
         <!-- Product List -->
 
         <section>
-          <h2 class="text-xl text-slate-300 font-bold mb-2">Product list</h2>
+          <h2 class="text-xl font-semibold mb-4">Product List</h2>
           <div class="flex items-center justify-between mb-6">
-            <label for="search-input" class="text-slate-500 text-lg"
-              >Search</label
-            >
+            <label for="search-input" class="text-sm">Search</label>
             <input
               type="text"
-              name="search-input"
               id="search-input"
-              class="bg-transparent rounded-xl border border-slate-500 text-slate-400"
+              class="bg-slate-700 rounded-md p-2 border border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
             />
           </div>
           <div class="flex items-center justify-between mb-6">
-            <label for="sort-products" class="text-slate-500 text-lg"
-              >Sort</label
-            >
+            <label for="sort-products" class="text-sm">Sort</label>
             <select
-              name="sort-products"
               id="sort-products"
-              class="bg-transparent text-slate-400 rounded-xl"
+              class="bg-slate-700 rounded-md p-2 border border-slate-600 focus:ring-2 focus:ring-indigo-500 outline-none"
             >
-              <option
-                class="bg-slate-500 text-slate-300"
-                selected
-                value="newest"
-              >
-                Newest
-              </option>
-              <option class="bg-slate-500 text-slate-300" value="oldest">
-                Oldest
-              </option>
+              <option value="newest" selected>Newest</option>
+              <option value="oldest">Oldest</option>
             </select>
           </div>
-          <div id="products-list" class="overflow-x-auto"></div>
-          <div class="h-20"></div>
+          <div id="products-list" class="space-y-4">
+            <!-- <p class="text-center text-slate-500">No products added yet.</p> -->
+          </div>
         </section>
-      </div>
+      </main>
     </div>
     <script src="../src/js/App.js" type="module"></script>
     <script src="../src/js/Storage.js" type="module"></script>
