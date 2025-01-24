@@ -4,10 +4,22 @@ const titleInput = document.querySelector("#category-title");
 const descriptionInput = document.querySelector("#category-description");
 const addNewCategoryBtn = document.querySelector("#add-new-category");
 
+const toggleCategoryBtn = document.querySelector("#toggle-add-category");
+
+const categoryWrapper = document.querySelector("#category-wrapper");
+
+const cancleAddNewCategory = document.querySelector("#cancle-new-category");
+
 class CategoryView {
   constructor() {
     // Attach event listener for the add button
     addNewCategoryBtn.addEventListener("click", (e) => this.addNewCategory(e));
+    toggleCategoryBtn.addEventListener("click", (e) =>
+      this.toggleAddNewCategory(e)
+    );
+    cancleAddNewCategory.addEventListener("click", (e) =>
+      this.cancleAddNewCategory(e)
+    );
     this.categories = [];
   }
 
@@ -42,6 +54,16 @@ class CategoryView {
 
     const categoryList = document.querySelector("#product-category");
     categoryList.innerHTML = result;
+  }
+
+  toggleAddNewCategory(e) {
+    categoryWrapper.classList.remove("hidden");
+    toggleCategoryBtn.classList.add("hidden");
+  }
+
+  cancleAddNewCategory(e) {
+    categoryWrapper.classList.add("hidden");
+    toggleCategoryBtn.classList.remove("hidden");
   }
 }
 
