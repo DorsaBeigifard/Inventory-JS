@@ -12,6 +12,7 @@
 // UI (ProductView CategoryView)
 
 import CategoryView from "./CategoryView.js"; //This is the instance, not the class
+import ProductView from "./ProductView.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   //Set App
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   console.log(CategoryView);
   // create categories options
   CategoryView.createCategoryList();
-});
 
-class App {}
+  ProductView.setApp();
+  ProductView.createProductList(ProductView.products);
+});

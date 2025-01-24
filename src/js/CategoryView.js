@@ -7,7 +7,7 @@ const addNewCategoryBtn = document.querySelector("#add-new-category");
 class CategoryView {
   constructor() {
     // Attach event listener for the add button
-    addNewCategoryBtn.addEventListener("click", () => this.addNewCategory());
+    addNewCategoryBtn.addEventListener("click", (e) => this.addNewCategory(e));
     this.categories = [];
   }
 
@@ -16,7 +16,8 @@ class CategoryView {
     this.categories = Storage.getAllCategories();
   }
 
-  addNewCategory() {
+  addNewCategory(e) {
+    e.preventDefault();
     const title = titleInput.value.trim();
     const description = descriptionInput.value.trim();
     if (!title || !description) return; // Do nothing if fields are empty
