@@ -1,26 +1,48 @@
-// title, description => get it in an obj => give it to save category
-import Storage from "./storage";
+import Storage from "./Storage.js";
 
-const title = document.querySelector("#category-title");
-const description = document.querySelector("#category-discription");
+const titleInput = document.querySelector("#category-title");
+const descriptionInput = document.querySelector("#category-description");
 const addNewCategoryBtn = document.querySelector("#add-new-category");
 
-export default class CategoryView {
+class CategoryView {
   constructor() {
-    //This ensures that whenever you create a new instance of CategoryView, the button will be ready to trigger the addNewCategory method.
-    addNewCategoryBtn.addEventListener("click", (e) => this.addNewCategory(e));
+    // Attach event listener for the add button
+    addNewCategoryBtn.addEventListener("click", () => this.addNewCategory());
     this.categories = [];
   }
-  addNewCategory(e) {
-    // to not refresh the page when clicking the btn
-    e.preventDefault();
-    const title = title.value;
-    const description = description.value;
-    if (!title || !description) return; //If each was empty don't continue the program
-    //save to local storage
-    Storage.saveNewCategory({ title, description });
-    this.categories = Storage.getAllCategories();
 
-    //Update select category option in DOM
+  setApp() {
+    //to get categories when refreshed in the property
+    this.categories = Storage.getAllCategories();
+  }
+
+  addNewCategory() {
+    const title = titleInput.value.trim();
+    const description = descriptionInput.value.trim();
+    if (!title || !description) return; // Do nothing if fields are empty
+
+    // Save new category to storage
+    Storage.saveNewCategory({ title, description });
+
+    // update the DOM
+    this.categories = Storage.getAllCategories();
+    this.createCategoryList();
+
+    //refresh title and description
+    titleInput.value = "";
+    descriptionInput.value = "";
+  }
+
+  createCategoryList() {
+    let result = `<option value="default" selected disabled>Select a category</option>`;
+    this.categories.forEach((c) => {
+      result += `<option class="bg-slate-500 text-slate-400" value="${c.id}">${c.title}</option>`;
+    });
+
+    const categoryList = document.querySelector("#product-category");
+    categoryList.innerHTML = result;
   }
 }
+
+// Instantiate the class if needed
+export default new CategoryView();

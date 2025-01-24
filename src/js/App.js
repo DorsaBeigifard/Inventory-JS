@@ -11,6 +11,14 @@
 // Main and App for running the app
 // UI (ProductView CategoryView)
 
-class App{
+import CategoryView from "./CategoryView.js"; //This is the instance, not the class
 
-}
+document.addEventListener("DOMContentLoaded", () => {
+  //Set App
+  CategoryView.setApp();
+  //   console.log(CategoryView);
+  // create categories options
+  CategoryView.createCategoryList();
+});
+
+class App {}
